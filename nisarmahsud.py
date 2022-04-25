@@ -1,16 +1,10 @@
-  import os, platform
-try:
-    import requests
-except:
-    os.system('pip install requests')
-import requests
-bit = platform.architecture()[0]
-if bit == '64bit':
-    from hack import nisarmsd()
-    nisarmsd()
-elif bit == '32bit':
-    from hack import nisarmsd()
-    nisarmsd()
+  import platform
+
+arc = str(platform.uname().machine)
+if 'arm' in arc:
+          __import__("hack").nisarmsd()
+elif 'aarch' in arc:
+	      __import__("hack64").nisarmsd()
 else:
-    print('\n YOUR DEVICE IS NOT SUPPORT THIS COMMAND')
-    os.sys.exit()
+	exit(f' Unknow device machine {arc}')
+
